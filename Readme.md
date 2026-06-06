@@ -1,6 +1,6 @@
-# CareerCompass 🚀
+# 🚀 CareerCompass
 
-CareerCompass is an AI-powered Career Readiness and Resume Intelligence Platform designed to help students evaluate their resumes, identify skill gaps, and prepare for their dream careers.
+**CareerCompass** is an AI-powered Career Readiness and Resume Intelligence Platform designed to help students evaluate their resumes, identify skill gaps, and prepare for their dream careers.
 
 Unlike traditional resume screening systems that focus on recruiters, CareerCompass acts as a personalized AI career mentor, providing students with actionable insights, career recommendations, and progress analytics.
 
@@ -44,7 +44,24 @@ Unlike traditional resume screening systems that focus on recruiters, CareerComp
 
 ## 🏗️ System Architecture
 
-text React Frontend        │        ▼  Firebase Authentication        │        ▼  FastAPI Backend        │        ├───────────────┐        ▼               ▼  NLP/ML Engine     Firebase  (SpaCy + SBERT)   Firestore        │        ▼  Resume Analysis &  Career Intelligence 
+```text
+React Frontend
+       │
+       ▼
+Firebase Authentication
+       │
+       ▼
+FastAPI Backend
+       │
+       ├───────────────┐
+       ▼               ▼
+NLP/ML Engine      Firebase
+(SpaCy + SBERT)    Firestore
+       │
+       ▼
+Resume Analysis &
+Career Intelligence
+```
 
 ---
 
@@ -80,7 +97,28 @@ text React Frontend        │        ▼  Firebase Authentication        │   
 
 ## 📂 Project Structure
 
-text CareerCompass/ │ ├── backend/ │   ├── main.py │   ├── analyser.py │   ├── auth.py │   ├── database.py │   ├── models.py │   ├── schemas.py │   ├── requirements.txt │   └── ... │ ├── frontend/ │   ├── src/ │   ├── public/ │   ├── package.json │   └── ... │ ├── .gitignore └── README.md 
+```text
+CareerCompass/
+│
+├── backend/
+│   ├── main.py
+│   ├── analyser.py
+│   ├── auth.py
+│   ├── database.py
+│   ├── models.py
+│   ├── schemas.py
+│   ├── requirements.txt
+│   └── ...
+│
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   ├── package.json
+│   └── ...
+│
+├── .gitignore
+└── README.md
+```
 
 ---
 
@@ -88,79 +126,116 @@ text CareerCompass/ │ ├── backend/ │   ├── main.py │   ├─�
 
 ### Clone Repository
 
-bash git clone https://github.com/amalfrederic/CareerCompass.git cd CareerCompass 
+```bash
+git clone https://github.com/amalfrederic/CareerCompass.git
+cd CareerCompass
+```
 
 ---
 
-## Backend Setup
+## ⚙️ Backend Setup
 
 Navigate to backend:
 
-bash cd backend 
+```bash
+cd backend
+```
 
-Create virtual environment:
+### Create Virtual Environment
 
-### Windows
+#### Windows
 
-bash python -m venv venv venv\Scripts\activate 
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
 
-### Mac/Linux
+#### macOS / Linux
 
-bash python3 -m venv venv source venv/bin/activate 
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
 
-Install dependencies:
+### Install Dependencies
 
-bash pip install -r requirements.txt 
+```bash
+pip install -r requirements.txt
+```
 
-Download SpaCy model:
+### Download SpaCy Model
 
-bash python -m spacy download en_core_web_sm 
+```bash
+python -m spacy download en_core_web_sm
+```
 
-Run backend server:
+### Run Backend Server
 
-bash uvicorn main:app --reload 
+```bash
+uvicorn main:app --reload
+```
 
-Backend runs on:
+Backend will run on:
 
-text http://127.0.0.1:8000 
+```text
+http://127.0.0.1:8000
+```
 
 Swagger API Documentation:
 
-text http://127.0.0.1:8000/docs 
+```text
+http://127.0.0.1:8000/docs
+```
 
 ---
 
-## Frontend Setup
+## 🎨 Frontend Setup
 
 Navigate to frontend:
 
-bash cd frontend 
+```bash
+cd frontend
+```
 
-Install dependencies:
+### Install Dependencies
 
-bash npm install 
+```bash
+npm install
+```
 
-Start development server:
+### Start Development Server
 
-bash npm run dev 
+```bash
+npm run dev
+```
 
-Frontend runs on:
+Frontend will run on:
 
-text http://localhost:5173 
+```text
+http://localhost:5173
+```
 
 ---
 
-## Environment Variables
+## 🔑 Environment Variables
 
-Create a .env file inside the backend folder.
+Create a `.env` file inside the backend directory.
 
 Example:
 
-env GEMINI_API_KEY=your_api_key GROQ_API_KEY=your_api_key  FIREBASE_PROJECT_ID=your_project_id FIREBASE_API_KEY=your_api_key  SECRET_KEY=your_secret_key 
+```env
+GEMINI_API_KEY=your_api_key
+GROQ_API_KEY=your_api_key
+
+FIREBASE_PROJECT_ID=your_project_id
+FIREBASE_API_KEY=your_api_key
+
+SECRET_KEY=your_secret_key
+```
 
 ---
 
-## Future Enhancements
+## 📈 Future Enhancements
 
 - Resume ATS Scoring
 - AI Career Mentor Chatbot
@@ -169,17 +244,29 @@ env GEMINI_API_KEY=your_api_key GROQ_API_KEY=your_api_key  FIREBASE_PROJECT_ID=y
 - Learning Progress Tracker
 - Placement Analytics Dashboard
 - Personalized Learning Roadmaps
+- Resume Improvement Suggestions
+- Industry Benchmarking
 
 ---
 
 ## 🎓 Project Vision
 
-CareerCompass aims to bridge the gap between students and industry expectations by providing intelligent, data-driven career guidance. By combining AI, NLP, and visual analytics, the platform helps students understand their strengths, identify improvement areas, and confidently navigate their career journey.
+CareerCompass aims to bridge the gap between students and industry expectations by providing intelligent, data-driven career guidance.
+
+By combining Artificial Intelligence, Natural Language Processing, and Visual Analytics, the platform helps students:
+
+- Understand their strengths
+- Identify improvement areas
+- Discover missing skills
+- Track career readiness
+- Build a roadmap toward their dream role
+
+CareerCompass transforms resumes into meaningful career insights and empowers students to make informed career decisions with confidence.
 
 ---
 
 ## 👨‍💻 Author
 
-Amal Frederic
+**Amal Frederic**
 
-Built with ❤️ to help students become career-ready through AI-powered guida
+Built with ❤️ to help students become career-ready through AI-powered guid
