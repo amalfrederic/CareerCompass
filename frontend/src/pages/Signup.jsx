@@ -1,17 +1,19 @@
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import { signup } from "../services/auth";
 
 export default function Signup() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
+    const navigate = useNavigate();
     const handleSignup = async () => {
         try {
             await signup(email, password);
             alert("Account Created");
+            navigate("/login");
         } catch (err) {
-
+            navigate("/signup");
+            alert(err.message);
             console.log("Hi");
             console.log(err);
             console.log(err.code);

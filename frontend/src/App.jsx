@@ -1,21 +1,28 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
+import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import CareerDashboard from "./pages/CareerDashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
+
 
 function App() {
   return (
     <BrowserRouter>
-      <nav>
-        <Link to="/">Login</Link> |{" "}
-        <Link to="/signup">Signup</Link> |{" "}
-        <Link to="/dashboard">Dashboard</Link> |{" "}
-      </nav>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/dashboard" element={<CareerDashboard />} />
+
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <CareerDashboard />
+            </ProtectedRoute>
+          }
+        />
 
       </Routes>
     </BrowserRouter>

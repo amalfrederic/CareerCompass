@@ -4,7 +4,9 @@ import {
     BarChart, Bar, XAxis, YAxis, Tooltip, Cell
 } from "recharts";
 
+import { logout } from "../services/auth";
 import { auth, db } from "../firebase/config";
+import { useNavigate } from "react-router-dom";
 
 console.log(auth);
 console.log(db);
@@ -349,12 +351,22 @@ Built ML projects including classification and regression models.`
     }));
     const barData = sa(data?.all_roles).slice().sort((a, b) => b.score - a.score);
     const BAR_COLORS = ["#3dffa0", "#4a8fff", "#2affd4", "#ff9f43", "#ff5252", "#c084fc", "#f5c842"];
+    const navigate = useNavigate();
+    const handleSignout = async () => {
+        try {
+            await logout();
+            alert("Logout Successfull");
+            navigate("/");
+        } catch (err) {
+            alert(err.message);
+        }
+    }
 
     return (
         <>
             <style>{CSS}</style>
             <div className="app">
-
+                <button onClick={handleSignout}>Signout</button>
                 {/* ── HERO ── */}
                 <section className="hero">
                     <div className="hero-badge">AI-Powered Career Intelligence</div>
