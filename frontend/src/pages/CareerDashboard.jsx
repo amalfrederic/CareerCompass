@@ -76,8 +76,62 @@ body::before{
 }
 .app{position:relative;z-index:1;padding-bottom:100px}
 
+/* ── NAVBAR ── */
+.navbar{
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 40px;height:64px;
+  background:rgba(6,8,16,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(30,37,64,.7);
+}
+.navbar-left{display:flex;align-items:center;gap:12px}
+.navbar-logo-icon{
+  width:32px;height:32px;border-radius:8px;
+  background:linear-gradient(135deg,#3a6fff,#5a30ff);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.8rem;font-weight:800;color:#fff;
+  box-shadow:0 4px 14px rgba(58,111,255,.35);flex-shrink:0;
+}
+.navbar-logo-text{
+  font-size:1rem;font-weight:800;letter-spacing:-.5px;
+  background:linear-gradient(135deg,#eef0ff,#6080ff);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.navbar-center{
+  position:absolute;left:50%;transform:translateX(-50%);
+  display:flex;align-items:center;gap:6px;
+}
+.navbar-pill{
+  font-family:var(--mono);font-size:.6rem;letter-spacing:2px;text-transform:uppercase;
+  color:var(--teal);background:rgba(42,255,212,.06);
+  border:1px solid rgba(42,255,212,.18);border-radius:99px;padding:5px 16px;
+}
+.navbar-right{display:flex;align-items:center;gap:10px}
+.navbar-user{
+  display:flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:.65rem;color:var(--muted);letter-spacing:.5px;
+}
+.navbar-avatar{
+  width:28px;height:28px;border-radius:50%;
+  background:linear-gradient(135deg,rgba(74,143,255,.2),rgba(42,255,212,.15));
+  border:1px solid rgba(74,143,255,.3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.65rem;font-weight:700;color:var(--blue);
+}
+.btn-signout{
+  display:flex;align-items:center;gap:7px;
+  font-family:var(--font);font-size:.82rem;font-weight:600;letter-spacing:.2px;
+  padding:8px 18px;border-radius:8px;cursor:pointer;
+  background:rgba(255,82,82,.07);border:1px solid rgba(255,82,82,.22);color:var(--red);
+  transition:background .18s,border-color .18s,transform .15s;
+}
+.btn-signout:hover{background:rgba(255,82,82,.14);border-color:rgba(255,82,82,.4);transform:translateY(-1px)}
+.btn-signout:active{transform:translateY(0)}
+.btn-signout svg{flex-shrink:0;opacity:.8}
+
+/* ── HERO ── */
 .hero{
-  min-height:100vh;display:flex;flex-direction:column;align-items:center;
+  min-height:calc(100vh - 64px);display:flex;flex-direction:column;align-items:center;
   justify-content:center;padding:40px 20px;
   background:radial-gradient(ellipse 80% 55% at 50% 0%,rgba(74,143,255,.09) 0%,transparent 70%);
 }
@@ -130,6 +184,7 @@ textarea:focus,input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(74
 .err-box{background:rgba(255,82,82,.07);border:1px solid rgba(255,82,82,.25);border-radius:10px;padding:12px 16px;color:var(--red);font-family:var(--mono);font-size:.78rem;margin-top:14px}
 .warn-box{background:rgba(245,200,66,.07);border:1px solid rgba(245,200,66,.25);border-radius:10px;padding:12px 16px;color:var(--gold);font-family:var(--mono);font-size:.76rem;margin-top:14px}
 
+/* ── DASHBOARD ── */
 .dash{max-width:1200px;margin:0 auto;padding:0 20px}
 .dash-header{padding:56px 0 36px;border-bottom:1px solid var(--border);margin-bottom:36px}
 .dash-header-top{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:20px}
@@ -234,6 +289,12 @@ textarea:focus,input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(74
 .fu{animation:fadeUp .5s ease both}
 .fu.d1{animation-delay:.08s}.fu.d2{animation-delay:.16s}.fu.d3{animation-delay:.24s}
 .fu.d4{animation-delay:.32s}.fu.d5{animation-delay:.4s}.fu.d6{animation-delay:.48s}
+
+@media(max-width:640px){
+  .navbar{padding:0 20px}
+  .navbar-center{display:none}
+  .navbar-user{display:none}
+}
 `;
 
 const CTip = ({ active, payload, label }) => {
@@ -366,7 +427,30 @@ Built ML projects including classification and regression models.`
         <>
             <style>{CSS}</style>
             <div className="app">
-                <button onClick={handleSignout}>Signout</button>
+
+                {/* ── NAVBAR ── */}
+                <nav className="navbar">
+                    <div className="navbar-left">
+                        <div className="navbar-logo-icon">CC</div>
+                        <span className="navbar-logo-text">CareerCompass</span>
+                    </div>
+                    <div className="navbar-center">
+                        <span className="navbar-pill">AI Career Intelligence</span>
+                    </div>
+                    <div className="navbar-right">
+                        <div className="navbar-user">
+                            <div className="navbar-avatar">U</div>
+                            <span>Dashboard</span>
+                        </div>
+                        <button className="btn-signout" onClick={handleSignout}>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" y1="12" x2="9" y2="12" />
+                            </svg>
+                            Sign Out
+                        </button>
+                    </div>
+                </nav>
+
                 {/* ── HERO ── */}
                 <section className="hero">
                     <div className="hero-badge">AI-Powered Career Intelligence</div>
