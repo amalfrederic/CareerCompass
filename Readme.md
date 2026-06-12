@@ -265,8 +265,8 @@ CareerCompass transforms resumes into meaningful career insights and empowers st
 
 ---
 
-## 👨‍💻 Author
+## Contributors
 
-**Amal Frederic**
+**Amal Frederic** & **Adith Anil**
 
 Built with ❤️ to help students become career-ready through AI-powered guid
